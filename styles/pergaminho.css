@@ -360,11 +360,13 @@
   background: none;
   border: none;
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--campo-grass-2);
   cursor: pointer;
   text-decoration: underline;
-  margin-top: 0.2rem;
+  margin-top: 0.4rem;
+  padding: 0.6rem 1rem;
+  min-height: 44px;
 }
 
 /* === Selfie === */
@@ -455,10 +457,11 @@
 
 .selfie__btn {
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  padding: 0.65rem 1.1rem;
+  padding: 0.85rem 1.3rem;
+  min-height: 44px;
   border-radius: 999px;
   background: var(--campo-paper);
   color: var(--campo-grass-1);
@@ -574,4 +577,102 @@
 
 .contrato.contrato--capturando #selfie-video {
   display: none !important;
+}
+
+/* === Animações de futebol === */
+
+/* Brasão pulsante (⚽ e 🏆 no header) */
+.contrato__brasao {
+  display: inline-block;
+  animation: brasao-pulse 3.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.contrato__header .contrato__brasao:last-child {
+  animation-delay: 1.6s;
+}
+
+@keyframes brasao-pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  20% { transform: scale(1.18) rotate(-6deg); }
+  35% { transform: scale(1.05) rotate(4deg); }
+  50% { transform: scale(1.12) rotate(-2deg); }
+  65% { transform: scale(1) rotate(0deg); }
+}
+
+/* Bolas rolando atravessando o contrato */
+@keyframes bola-rolando-lr {
+  0% { transform: translateX(0) rotate(0); }
+  100% { transform: translateX(calc(100vw + 100px)) rotate(2160deg); }
+}
+
+@keyframes bola-rolando-rl {
+  0% { transform: translateX(0) rotate(0); }
+  100% { transform: translateX(calc(-100vw - 100px)) rotate(-2160deg); }
+}
+
+/* Burst de bolas (centro pra fora) */
+@keyframes bola-burst {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 1;
+  }
+  60% { opacity: 1; }
+  100% {
+    transform:
+      translate(-50%, -50%)
+      translate(calc(cos(var(--angle)) * var(--dist)), calc(sin(var(--angle)) * var(--dist)))
+      rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Troféus chovendo */
+@keyframes trofeu-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(110vh) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+/* Cláusulas com bolinhas que pulsam levemente */
+.contrato__clausulas li span {
+  display: inline-block;
+  animation: clausula-bounce 2.2s ease-in-out infinite;
+}
+
+.contrato__clausulas li:nth-child(1) span { animation-delay: 0s; }
+.contrato__clausulas li:nth-child(2) span { animation-delay: 0.3s; }
+.contrato__clausulas li:nth-child(3) span { animation-delay: 0.6s; }
+.contrato__clausulas li:nth-child(4) span { animation-delay: 0.9s; }
+.contrato__clausulas li:nth-child(5) span { animation-delay: 1.2s; }
+
+@keyframes clausula-bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(20deg); }
+}
+
+/* Linhas tracejadas tipo "esquema tático" no fundo do contrato */
+.contrato__corpo {
+  position: relative;
+}
+
+.contrato__corpo::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  right: -10%;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--campo-grass-2) 0 6px, transparent 6px 12px);
+  opacity: 0.18;
+  pointer-events: none;
+  transform: translateY(-50%);
+  z-index: -1;
 }

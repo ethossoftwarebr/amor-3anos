@@ -41,6 +41,11 @@ function setupDigital() {
     } else if (navigator.vibrate && revealed === TOTAL) {
       navigator.vibrate([20, 30, 20]);
     }
+
+    // Evento custom: digital completa
+    if (revealed === TOTAL) {
+      document.dispatchEvent(new CustomEvent('digital:complete'));
+    }
   }
 
   function clear() {
@@ -223,8 +228,11 @@ export function initContrato({ onConfirm }) {
       return;
     }
 
+    // Evento custom: contrato renovado (pra disparar bolas + troféus)
+    document.dispatchEvent(new CustomEvent('contrato:renovado'));
+
     onConfirm?.({
-      assinaturaURL: null, // mantém compatibilidade com o handler
+      assinaturaURL: null,
       selfieURL: selfie.getDataURL(),
     });
   });

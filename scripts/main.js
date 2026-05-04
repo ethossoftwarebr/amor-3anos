@@ -1,9 +1,10 @@
-import { startCoracoes, stopCoracoes, bigHeartShower } from './coracoes.js';
+import { startCoracoes, stopCoracoes, bigHeartShower, spawnHeartAt } from './coracoes.js';
 import { initTimeline } from './timeline.js';
 import { initCarta } from './carta.js';
 import { initContrato } from './contrato.js';
 import { initFinal } from './final.js';
 import { startMusic, setupMiniplayer } from './audio.js';
+import { initFutebol } from './futebol.js';
 
 const INICIO_NAMORO = new Date('2023-05-05T00:00:00-03:00').getTime();
 
@@ -139,11 +140,29 @@ function init() {
   // Mini-player
   setupMiniplayer();
 
+  // Corações no clique/toque (após a jornada começar)
+  let lastHeartAt = 0;
+  function onClickGlobal(e) {
+    if (!aberturaIniciada) return;
+    const now = Date.now();
+    if (now - lastHeartAt < 80) return; // throttle leve
+    lastHeartAt = now;
+    const x = e.clientX ?? (e.changedTouches?.[0]?.clientX);
+    const y = e.clientY ?? (e.changedTouches?.[0]?.clientY);
+    if (x == null || y == null) return;
+    // Clique em botão/link gera burst maior
+    const isInteractive = e.target.closest('button, a, [role="button"]');
+    spawnHeartAt(x, y, isInteractive ? 4 : 2);
+  }
+  document.addEventListener('click', onClickGlobal);
+  document.addEventListener('touchend', onClickGlobal, { passive: true });
+
   // Atos modulares
   initTimeline();
   initCarta();
   initContrato({ onConfirm: handleSim });
   initFinal();
+  initFutebol();
 }
 
 // === Handlers do contrato ===

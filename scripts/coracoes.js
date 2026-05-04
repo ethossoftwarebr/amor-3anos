@@ -96,3 +96,30 @@ export function heartBurst(x, y, count = 30) {
     }, i * 35);
   }
 }
+
+// Pequenos corações que sobem do ponto exato do clique/toque
+export function spawnHeartAt(x, y, count = 3) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const heart = document.createElement('div');
+      const variante = COR_VARIANTES[Math.floor(Math.random() * COR_VARIANTES.length)];
+      heart.className = `coracao coracao--pop ${variante}`.trim();
+      const size = Math.random() * 12 + 14;
+      const offsetX = (Math.random() - 0.5) * 36;
+      const offsetY = (Math.random() - 0.5) * 14;
+      heart.style.cssText = `
+        position: fixed;
+        left: ${x + offsetX - size / 2}px;
+        top: ${y + offsetY - size / 2}px;
+        width: ${size}px;
+        height: ${size}px;
+        z-index: 70;
+        animation: heart-pop 1.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+        pointer-events: none;
+      `;
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 1600);
+    }, i * 70);
+  }
+}
