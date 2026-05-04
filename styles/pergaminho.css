@@ -15,11 +15,18 @@
 }
 
 .ato--contrato {
-  padding: clamp(3rem, 8vh, 5rem) var(--safe-x);
+  padding: clamp(2rem, 6vh, 4rem) clamp(0.8rem, 3vw, 2rem);
   position: relative;
   overflow: hidden;
   background: var(--campo-grass-1);
   color: var(--campo-ink);
+  min-height: auto;
+}
+
+@media (min-width: 600px) {
+  .ato--contrato {
+    padding: clamp(3rem, 8vh, 5rem) var(--safe-x);
+  }
 }
 
 /* Campo de futebol estilizado como background */
@@ -82,6 +89,41 @@
   flex-direction: column;
   align-items: center;
   gap: 1.4rem;
+  overflow: hidden;
+}
+
+/* Faixa verde estilo gol no topo */
+.contrato::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--campo-grass-1) 0 22px,
+      var(--campo-grass-3) 22px 44px
+    );
+  pointer-events: none;
+}
+
+/* Faixa verde estilo gol no rodapé */
+.contrato::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--campo-grass-1) 0 22px,
+      var(--campo-grass-3) 22px 44px
+    );
+  pointer-events: none;
 }
 
 .contrato__header {

@@ -8,7 +8,8 @@ function setupRevealCarta(corpoSelector, finaisSelectors = []) {
     .filter(Boolean);
   const todos = [...elementos, ...finais];
 
-  if (!('IntersectionObserver' in window)) {
+  // Reduced motion: revela tudo imediatamente
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
     todos.forEach((el) => el.classList.add('revealed'));
     return;
   }
@@ -18,16 +19,40 @@ function setupRevealCarta(corpoSelector, finaisSelectors = []) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const idx = todos.indexOf(entry.target);
-          const delay = Math.max(0, idx % 6) * 60;
+          const delay = Math.max(0, idx % 6) * 50;
           setTimeout(() => entry.target.classList.add('revealed'), delay);
           obs.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
+    { threshold: 0.05, rootMargin: '0px' }
   );
 
   todos.forEach((el) => obs.observe(el));
+
+  // Fallback: garante que tudo apareça mesmo se observer falhar
+  // Quando a seção entra no viewport, agenda revelação progressiva
+  const sectionEl = corpo.closest('section');
+  if (sectionEl) {
+    const sectionObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            todos.forEach((el, i) => {
+              setTimeout(() => {
+                if (!el.classList.contains('revealed')) {
+                  el.classList.add('revealed');
+                }
+              }, i * 80 + 200);
+            });
+            sectionObs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+    sectionObs.observe(sectionEl);
+  }
 }
 
 export function initCarta() {
