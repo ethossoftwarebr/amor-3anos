@@ -1,89 +1,68 @@
-// === Canvas de assinatura ===
-function setupSignaturePad(canvas) {
-  const ctx = canvas.getContext('2d');
-  let drawing = false;
-  let lastX = 0;
-  let lastY = 0;
-  let hasContent = false;
+// === Impressão digital (substitui canvas de assinatura) ===
+function setupDigital() {
+  const area = document.getElementById('digital-area');
+  const limpar = document.getElementById('digital-limpar');
+  const progresso = document.getElementById('digital-progresso');
 
-  function resize() {
-    const rect = canvas.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
-    const tmp = document.createElement('canvas');
-    tmp.width = canvas.width;
-    tmp.height = canvas.height;
-    tmp.getContext('2d').drawImage(canvas, 0, 0);
+  if (!area) return { isEmpty: () => true, getDataURL: () => null };
 
-    canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-    canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+  const traces = Array.from(area.querySelectorAll('.trace'));
+  const TOTAL = traces.length;
+  const THRESHOLD = Math.ceil(TOTAL * 0.6); // 60% pra considerar "preenchida"
 
-    ctx.scale(dpr, dpr);
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.lineWidth = 2.4;
-    ctx.strokeStyle = '#1a1a1a';
+  let revealed = 0;
 
-    if (hasContent) {
-      ctx.drawImage(tmp, 0, 0, rect.width, rect.height);
+  function updateState() {
+    if (progresso) progresso.textContent = `${revealed}/${TOTAL}`;
+    if (revealed === 0) {
+      area.dataset.state = 'empty';
+    } else if (revealed >= TOTAL) {
+      area.dataset.state = 'complete';
+    } else {
+      area.dataset.state = 'filling';
     }
   }
 
-  resize();
-  window.addEventListener('resize', resize);
+  function pressionar(e) {
+    if (e?.preventDefault) e.preventDefault();
+    if (revealed >= TOTAL) return;
 
-  function pos(e) {
-    const rect = canvas.getBoundingClientRect();
-    const point = e.touches ? e.touches[0] : e;
-    return {
-      x: point.clientX - rect.left,
-      y: point.clientY - rect.top,
-    };
+    // Revela 1 ou 2 linhas por toque pra ser mais responsivo
+    const incremento = revealed < TOTAL - 1 ? (Math.random() < 0.4 ? 2 : 1) : 1;
+    for (let i = 0; i < incremento && revealed < TOTAL; i++) {
+      traces[revealed].classList.add('drawn');
+      revealed++;
+    }
+    updateState();
+
+    // Vibração tátil em mobile (se disponível)
+    if (navigator.vibrate && revealed < TOTAL) {
+      navigator.vibrate(15);
+    } else if (navigator.vibrate && revealed === TOTAL) {
+      navigator.vibrate([20, 30, 20]);
+    }
   }
 
-  function start(e) {
-    e.preventDefault();
-    drawing = true;
-    const p = pos(e);
-    lastX = p.x;
-    lastY = p.y;
+  function clear() {
+    traces.forEach((p) => p.classList.remove('drawn'));
+    revealed = 0;
+    updateState();
   }
 
-  function move(e) {
-    if (!drawing) return;
-    e.preventDefault();
-    const p = pos(e);
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(p.x, p.y);
-    ctx.stroke();
-    lastX = p.x;
-    lastY = p.y;
-    hasContent = true;
-  }
+  // Pointer events cobrem mouse + touch + pen
+  area.addEventListener('pointerdown', pressionar);
+  area.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'Enter') pressionar(e);
+  });
 
-  function end(e) {
-    e?.preventDefault?.();
-    drawing = false;
-  }
+  limpar?.addEventListener('click', clear);
 
-  canvas.addEventListener('pointerdown', start);
-  canvas.addEventListener('pointermove', move);
-  canvas.addEventListener('pointerup', end);
-  canvas.addEventListener('pointercancel', end);
-  canvas.addEventListener('pointerleave', end);
+  updateState();
 
   return {
-    clear() {
-      const rect = canvas.getBoundingClientRect();
-      ctx.clearRect(0, 0, rect.width, rect.height);
-      hasContent = false;
-    },
-    isEmpty() {
-      return !hasContent;
-    },
-    getDataURL() {
-      return canvas.toDataURL('image/png');
-    },
+    isEmpty: () => revealed < THRESHOLD,
+    getDataURL: () => null, // a digital fica visível no html2canvas direto
+    isComplete: () => revealed >= TOTAL,
   };
 }
 
@@ -123,12 +102,12 @@ function setupSelfie() {
 
   async function abrirCamera() {
     if (!navigator.mediaDevices?.getUserMedia) {
-      dica.textContent = 'seu navegador não tem câmera disponível 😢 — assina e segue.';
+      dica.textContent = 'seu navegador não tem câmera disponível 😢';
       dica.style.color = '#8b1a1a';
       return;
     }
 
-    dica.textContent = 'sorri, princesa ✨';
+    dica.textContent = 'sorri, jogadora ✨';
 
     try {
       stream = await navigator.mediaDevices.getUserMedia({
@@ -172,8 +151,8 @@ function setupSelfie() {
     foto.src = dataURL;
     pararStream();
     setState('captured');
-    dica.textContent = 'autenticada com sucesso ❤️';
-    dica.style.color = '#1a6e1a';
+    dica.textContent = 'jogadora autenticada ⚽';
+    dica.style.color = '#1a6e3a';
   }
 
   function refazer() {
@@ -200,16 +179,11 @@ function setupSelfie() {
 
 // === Init ===
 export function initContrato({ onConfirm }) {
-  const canvas = document.getElementById('assinatura-canvas');
-  const limpar = document.getElementById('assinatura-limpar');
   const btn = document.getElementById('btn-renovar');
+  if (!btn) return;
 
-  if (!canvas || !btn) return;
-
-  const pad = setupSignaturePad(canvas);
+  const digital = setupDigital();
   const selfie = setupSelfie();
-
-  limpar?.addEventListener('click', () => pad.clear());
 
   function shake(el) {
     el?.animate(
@@ -225,14 +199,15 @@ export function initContrato({ onConfirm }) {
   }
 
   btn.addEventListener('click', () => {
-    if (pad.isEmpty()) {
-      shake(canvas.closest('.assinatura__canvas-wrap'));
-      const linha = canvas.parentElement?.parentElement?.querySelector('.assinatura__label');
-      if (linha) {
-        linha.style.color = '#8b1a1a';
-        linha.textContent = 'assina aqui antes, amor 💍';
+    if (digital.isEmpty()) {
+      const area = document.getElementById('digital-area');
+      shake(area);
+      const label = document.querySelector('.digital .contrato__label');
+      if (label) {
+        label.style.color = '#8b1a1a';
+        label.textContent = 'pressiona o polegar mais vezes, jogadora 👆';
       }
-      canvas.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      area?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
@@ -242,14 +217,14 @@ export function initContrato({ onConfirm }) {
       const dica = document.getElementById('selfie-dica');
       if (dica) {
         dica.style.color = '#8b1a1a';
-        dica.textContent = 'tira a selfie de autenticação primeiro 📷';
+        dica.textContent = 'tira a foto da escalação primeiro 📷';
       }
       selfieEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
     onConfirm?.({
-      assinaturaURL: pad.getDataURL(),
+      assinaturaURL: null, // mantém compatibilidade com o handler
       selfieURL: selfie.getDataURL(),
     });
   });

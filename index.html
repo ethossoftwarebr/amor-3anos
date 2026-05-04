@@ -511,50 +511,89 @@
       <a href="#contrato" class="carta__virar" id="continuacao-virar">agora sim, vira a página... 📜</a>
     </section>
 
-    <!-- ATO 7: Contrato -->
+    <!-- ATO 7: Contrato — Transferência de Jogador -->
     <section class="ato ato--contrato" id="contrato" aria-label="Renovação de contrato">
-      <div class="selo" aria-hidden="true">
-        Cartório<br />do Amor
-      </div>
+      <div class="campo" aria-hidden="true"></div>
 
       <article class="contrato">
-        <h2 class="contrato__titulo">Contrato de Renovação de Namoro</h2>
+        <header class="contrato__header">
+          <span class="contrato__brasao" aria-hidden="true">⚽</span>
+          <div class="contrato__head-info">
+            <p class="contrato__federacao">FCJP · Federação do Coração da Fernanda Vittoria</p>
+            <p class="contrato__temporada">Temporada 2026 / 27</p>
+          </div>
+          <span class="contrato__brasao" aria-hidden="true">🏆</span>
+        </header>
+
+        <h2 class="contrato__titulo">Termo de Renovação Contratual</h2>
+        <p class="contrato__subtitulo">Transferência interna · Time da Piculinha FC</p>
 
         <div class="contrato__corpo">
           <p>
-            Pelo presente instrumento particular, a CONTRATADA,
+            Considerando que a CONTRATADA,
             <strong>Fernanda Vittoria</strong>
-            (vulgarmente conhecida por <em>"Piculinha"</em>, <em>"Tomatinho"</em>, <em>"Covinhas"</em>, <em>"Neném"</em>, <em>"Pequena"</em>),
-            e o CONTRATANTE,
+            (vulgarmente conhecida por <em>"Piculinha"</em>, <em>"Tomatinho"</em>, <em>"Covinhas"</em>, <em>"Neném"</em>, <em>"Pequena"</em>) — camisa <strong>nº 10</strong>, jogadora titular do meio-campo da vida do contratante, ostentando meião com mais classe que qualquer atleta da Champions League...
+          </p>
+
+          <p>
+            E considerando que o CONTRATANTE,
             <strong>João Pedro</strong>,
-            acordam a renovação automática do vínculo afetivo iniciado em <strong>05/05/2023</strong>,
-            pelo período de mais 1 (um) ano, podendo ser renovado infinitas vezes — sem multa, sem cláusula de saída, sem letra miúda.
+            vem demonstrando bom desempenho técnico, dedicação acima da média e <em>fair play</em> comprovado nas últimas três temporadas (desde <strong>05/05/2023</strong>)...
           </p>
 
-          <p class="contrato__clausula">
-            Cláusula única: amor exclusivo, beijos em quantidade ilimitada,
-            abraços de domingo de manhã obrigatórios.
+          <p>
+            Fica acordada a renovação do vínculo do jogador como atleta titular no time da contratada pelo período de mais 1 (uma) temporada, com cláusula de renovação automática infinita — <strong>sem multa rescisória, sem janela de transferência, sem possibilidade de empréstimo a outro clube</strong>.
           </p>
+
+          <ul class="contrato__clausulas">
+            <li><span aria-hidden="true">⚽</span> Treinos diários de carinho</li>
+            <li><span aria-hidden="true">⚽</span> Beijos contam como bônus de desempenho</li>
+            <li><span aria-hidden="true">⚽</span> Abraços de domingo de manhã: <em>obrigatórios</em></li>
+            <li><span aria-hidden="true">⚽</span> Concentração 100% no relacionamento</li>
+            <li><span aria-hidden="true">⚽</span> Cabeça erguida nas dificuldades — somos um time</li>
+          </ul>
         </div>
 
-        <div class="assinatura">
-          <label class="assinatura__label" for="assinatura-canvas">Assinatura da contratada</label>
-          <div class="assinatura__canvas-wrap">
-            <canvas class="assinatura__canvas" id="assinatura-canvas" width="800" height="280" aria-label="Campo para assinar com mouse ou dedo"></canvas>
+        <!-- Impressão digital -->
+        <div class="digital">
+          <label class="contrato__label">Impressão digital da jogadora</label>
+          <div class="digital__area">
+            <div class="digital__circulo" id="digital-area" data-state="empty" role="button" tabindex="0" aria-label="Pressiona o polegar pra preencher a impressão digital">
+              <svg class="digital__svg" viewBox="0 0 200 200" aria-hidden="true">
+                <circle cx="100" cy="100" r="92" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)" stroke-width="1" stroke-dasharray="3 6" />
+                <g class="digital__paths" stroke="#d4af37" stroke-width="1.6" fill="none" stroke-linecap="round">
+                  <path class="trace" d="M 50 60 Q 100 38 150 60" />
+                  <path class="trace" d="M 44 74 Q 100 52 156 74" />
+                  <path class="trace" d="M 40 88 Q 100 66 160 88" />
+                  <path class="trace" d="M 38 102 Q 100 82 162 102" />
+                  <path class="trace" d="M 38 116 Q 100 100 162 116" />
+                  <path class="trace" d="M 40 130 Q 100 122 160 130" />
+                  <path class="trace" d="M 44 142 Q 100 138 156 142" />
+                  <path class="trace" d="M 50 152 Q 100 150 150 152" />
+                  <path class="trace" d="M 60 100 Q 100 92 140 100" />
+                  <path class="trace" d="M 70 110 Q 100 105 130 110" />
+                </g>
+              </svg>
+              <div class="digital__placeholder">
+                <span class="digital__icone">👆</span>
+                <p>pressiona o polegar aqui</p>
+              </div>
+              <div class="digital__progresso" id="digital-progresso">0/10</div>
+            </div>
+            <button type="button" class="digital__limpar" id="digital-limpar">limpar digital</button>
           </div>
-          <div class="assinatura__linha">Fernanda Vittoria · CPF do meu coração</div>
-          <button type="button" class="assinatura__limpar" id="assinatura-limpar">limpar assinatura</button>
         </div>
 
+        <!-- Selfie -->
         <div class="selfie">
-          <label class="assinatura__label">Reconhecimento facial · selfie da contratada</label>
+          <label class="contrato__label">Foto oficial da escalação</label>
           <div class="selfie__area">
             <div class="selfie__preview" id="selfie-preview" data-state="empty">
               <video id="selfie-video" playsinline muted autoplay></video>
               <img id="selfie-foto" alt="Selfie capturada" />
               <div class="selfie__placeholder">
                 <span class="selfie__icone">📷</span>
-                <p>tirar selfie pra autenticar o contrato</p>
+                <p>foto da jogadora pro álbum oficial</p>
               </div>
             </div>
             <div class="selfie__botoes">
@@ -566,10 +605,13 @@
           </div>
         </div>
 
-        <p class="contrato__pergunta">Assinou e tirou a selfie? Então é oficial.</p>
+        <p class="contrato__pergunta">
+          Já que você usa meião, né, minha jogadora?<br />
+          <em>Pressiona o polegar aí e me deixa fazer parte do seu time por mais um ano.</em>
+        </p>
 
         <div class="contrato__botoes" id="contrato-botoes">
-          <button type="button" class="btn-resp btn-renovar" id="btn-renovar">renovar nosso amor 💍</button>
+          <button type="button" class="btn-resp btn-renovar" id="btn-renovar">renovar contrato com o time ⚽</button>
         </div>
       </article>
     </section>
