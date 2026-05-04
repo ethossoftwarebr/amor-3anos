@@ -142,7 +142,7 @@ function init() {
   // Atos modulares
   initTimeline();
   initCarta();
-  initContrato({ onSim: handleSim, onNao: handleNao });
+  initContrato({ onConfirm: handleSim });
   initFinal();
 }
 
@@ -182,10 +182,6 @@ function handleSim({ assinaturaURL, selfieURL }) {
   window.__contratoData = { assinaturaURL, selfieURL };
 }
 
-function handleNao() {
-  // Se conseguir clicar (extremamente improvável), redireciona
-  window.location.href = '/erro.html';
-}
 
 // Boot
 if (document.readyState === 'loading') {

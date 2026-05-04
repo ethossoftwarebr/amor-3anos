@@ -76,9 +76,254 @@
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.carta__corpo p.revealed {
+.carta__corpo p.revealed,
+.carta__corpo h3.revealed,
+.carta__corpo blockquote.revealed,
+.carta__corpo ul.revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Títulos de capítulo na continuação */
+.carta__capitulo {
+  font-family: var(--font-hand);
+  font-size: clamp(1.4rem, 3.6vw, 1.95rem);
+  font-weight: 700;
+  color: #6a1b3d;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+
+.carta__capitulo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(106, 27, 61, 0.55), transparent);
+}
+
+.carta__corpo h3:first-child {
+  margin-top: 0.2rem;
+}
+
+/* Encantamento */
+.encantamento {
+  margin-top: 3rem;
+  padding: 2rem 0 1.5rem;
+  border-top: 1px solid rgba(26, 37, 64, 0.12);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.encantamento.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.encantamento__intro {
+  font-family: var(--font-hand);
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  color: rgba(26, 37, 64, 0.7);
+  font-style: italic;
+  margin-bottom: 0.4rem;
+}
+
+.encantamento__titulo {
+  font-family: var(--font-hand);
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  font-weight: 700;
+  color: #6a1b3d;
+  line-height: 1.05;
+  margin: 0.3rem 0 0.2rem;
+  letter-spacing: 0.005em;
+}
+
+.encantamento__artista {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26, 37, 64, 0.55);
+  margin-bottom: 1.5rem;
+}
+
+.encantamento__letra {
+  font-family: var(--font-hand);
+  font-size: clamp(1.1rem, 2.8vw, 1.45rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--carta-ink);
+  line-height: 1.7;
+  padding: 1.2rem 1.5rem;
+  margin: 1rem auto 1.5rem;
+  max-width: 28rem;
+  border-left: 3px solid #c2185b;
+  background: rgba(194, 24, 91, 0.04);
+  border-radius: 0 6px 6px 0;
+  text-align: left;
+}
+
+.encantamento__letra p {
+  margin: 0;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.encantamento__player {
+  margin: 1.2rem auto;
+  max-width: 360px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  aspect-ratio: 16 / 9;
+}
+
+.encantamento__player iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.encantamento__nota {
+  font-family: var(--font-hand);
+  font-size: clamp(1.1rem, 2.6vw, 1.35rem);
+  color: var(--carta-ink);
+  margin-top: 1rem;
+  line-height: 1.5;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Família de pelúcias */
+.pelucias {
+  margin-top: 2.5rem;
+  padding: 1.5rem 0 0.5rem;
+  border-top: 1px solid rgba(26, 37, 64, 0.12);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.pelucias.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pelucias__intro {
+  font-family: var(--font-hand);
+  font-size: clamp(1.1rem, 2.6vw, 1.4rem);
+  color: var(--carta-ink);
+  margin: 0.3rem 0 1rem;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.pelucias__lista {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 0.8rem;
+  padding: 0;
+  margin: 1rem 0 1.2rem;
+}
+
+.pelucias__lista li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
+  background: rgba(194, 24, 91, 0.08);
+  border: 1px solid rgba(194, 24, 91, 0.25);
+  border-radius: 999px;
+  font-family: var(--font-hand);
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  font-weight: 500;
+  color: var(--carta-ink);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.pelucias__lista li:hover {
+  transform: translateY(-2px) rotate(-1deg);
+  background: rgba(194, 24, 91, 0.15);
+}
+
+.pelucias__icone {
+  font-size: 1.1em;
+}
+
+.pelucias__sub {
+  font-family: var(--font-hand);
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  color: var(--carta-ink);
+  line-height: 1.55;
+  margin-top: 1rem;
+  font-style: italic;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Encerramento */
+.carta__encerramento {
+  margin-top: 2.5rem;
+  padding: 1.5rem 0 0.5rem;
+  border-top: 1px solid rgba(26, 37, 64, 0.12);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.carta__encerramento.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carta__refrao {
+  font-family: var(--font-hand);
+  font-size: clamp(1.6rem, 4.4vw, 2.4rem);
+  font-weight: 700;
+  color: #c2185b;
+  line-height: 1.15;
+  margin: 1.3rem 0 0.3rem !important;
+  letter-spacing: 0.005em;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.carta__well {
+  font-family: var(--font-hand);
+  font-size: clamp(1.4rem, 3.8vw, 2rem);
+  font-weight: 600;
+  color: #6a1b3d;
+  font-style: italic;
+  margin: 0.2rem 0 0.5rem !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Variante: continuação tem leve inclinação contrária pra visual de "P.S. virado" */
+.carta--continuacao {
+  transform: rotate(0.6deg);
+}
+
+.carta--continuacao:hover {
+  transform: rotate(0.2deg);
 }
 
 .carta__corpo em {

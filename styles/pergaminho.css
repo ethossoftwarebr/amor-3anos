@@ -292,18 +292,16 @@
   gap: 1.2rem;
   justify-content: center;
   align-items: center;
-  position: relative;
   width: 100%;
-  min-height: 80px;
-  flex-wrap: wrap;
 }
 
 .btn-resp {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 2.4vw, 1.15rem);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  padding: 1rem 2rem;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1.15rem 2.4rem;
   border-radius: 999px;
   border: 2px solid currentColor;
   cursor: pointer;
@@ -311,28 +309,16 @@
   white-space: nowrap;
 }
 
-.btn-sim {
-  background: linear-gradient(135deg, var(--pg-gold) 0%, #d4a017 100%);
-  color: var(--pg-ink);
+.btn-renovar {
+  background: linear-gradient(135deg, var(--pg-bordo) 0%, #c2185b 100%);
+  color: #fff;
   border-color: var(--pg-bordo);
-  box-shadow: 0 8px 24px rgba(184, 134, 11, 0.4);
+  box-shadow: 0 10px 32px rgba(139, 26, 26, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-.btn-sim:hover {
+.btn-renovar:hover {
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 12px 32px rgba(184, 134, 11, 0.55);
-}
-
-.btn-nao {
-  background: rgba(139, 26, 26, 0.1);
-  color: var(--pg-bordo);
-  border-color: var(--pg-bordo);
-  position: relative;
-}
-
-.btn-nao--fugindo {
-  position: absolute;
-  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 14px 40px rgba(194, 24, 91, 0.6);
 }
 
 .selo {
