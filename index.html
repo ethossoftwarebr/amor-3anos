@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a1f" />
+  <meta name="description" content="3 anos de João Pedro & Fernanda Vittoria — uma história de amor em 8 atos." />
+  <meta property="og:title" content="3 anos — JP & Fer" />
+  <meta property="og:description" content="Uma carta que virou página. Pra minha Piculinha." />
+  <meta property="og:type" content="website" />
+  <title>3 anos — JP &amp; Fer 💌</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://open.spotify.com" />
+
+  <link rel="stylesheet" href="/styles/base.css" />
+  <link rel="stylesheet" href="/styles/galaxia.css" />
+  <link rel="stylesheet" href="/styles/carta.css" />
+  <link rel="stylesheet" href="/styles/pergaminho.css" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E💌%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="galaxia" aria-hidden="true"></div>
+
+  <main id="app">
+
+    <!-- ATO 1: Capa -->
+    <section class="ato ato--capa" id="capa" aria-label="Capa">
+      <h1 class="capa__data">
+        <span>05/05/2023</span>
+        <span class="seta">→</span>
+        <span>05/05/2026</span>
+      </h1>
+      <p class="capa__sub">
+        Três aninhos do nosso amor 💌<br />
+        Cada dia mais minha. Toca aqui, minha princesa
+        <span class="capa__nome">Piculinha</span>
+      </p>
+      <button type="button" class="capa__btn" id="btn-comecar" aria-label="Começar a história">
+        Abrir a carta
+      </button>
+      <p class="capa__hint">ou rola pra baixo, neném ❤️</p>
+    </section>
+
+    <!-- ATO 2: Abertura -->
+    <section class="ato ato--abertura" id="abertura" aria-label="Declaração de abertura">
+      <p class="abertura__texto" id="abertura-texto" data-text="Fernanda Vittoria, meu amor da minha vida — hoje faz três aninhos que eu te pedi em namoro. E hoje, do mesmo jeitinho, eu escolho você de novo. Pela milésima vez. Pra sempre, neném."></p>
+
+      <div class="contador" id="contador" aria-live="polite">
+        <div class="contador__bloco">
+          <span class="contador__num" data-counter="dias">0</span>
+          <span class="contador__label">dias</span>
+        </div>
+        <div class="contador__bloco">
+          <span class="contador__num" data-counter="horas">0</span>
+          <span class="contador__label">horas</span>
+        </div>
+        <div class="contador__bloco">
+          <span class="contador__num" data-counter="minutos">0</span>
+          <span class="contador__label">minutos</span>
+        </div>
+        <div class="contador__bloco">
+          <span class="contador__num" data-counter="segundos">0</span>
+          <span class="contador__label">segundos</span>
+        </div>
+        <p class="contador__sufixo">te amando, princesa — sem pausa, sem fim, sem volta ❤️</p>
+      </div>
+    </section>
+
+    <!-- ATO 3: Timeline -->
+    <section class="ato ato--timeline" id="timeline" aria-label="Linha do tempo">
+      <div class="timeline__intro">
+        <h2>O nosso <strong>último aninho</strong> juntinhos</h2>
+        <p>Doze momentozinhos do nosso amor. A Terra deu uma volta inteira ao redor do sol — e eu fiquei girando ao redor de você o ano todo, princesa.</p>
+      </div>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">01</span>
+          <div class="capitulo__foto">
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/1.webp" />
+              <img src="/assets/fotos/1.jpg" alt="Cheese House em Goiânia" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">25 de agosto de 2025 · Cheese House, Goiânia</span>
+          <p class="capitulo__poesia">Cheese House. Goiânia inteira não tem lugar mais romântico que a mesa do seu ladinho. Você é meu lugar favorito, princesa 💌</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">02</span>
+          <div class="capitulo__foto">
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/2.webp" />
+              <img src="/assets/fotos/2.jpg" alt="Jantar romântico no nosso 2º aniversário" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">5 de maio de 2025 · 2 anos de nós</span>
+          <p class="capitulo__poesia">Jantar com a minha gatinha linda. Cada refeição com você é um pedidinho de casamento disfarçado em pão na mesa — e eu sigo te escolhendo todo dia, neném.</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">03</span>
+          <div class="capitulo__foto" data-orient="h">
+            <img class="capitulo__foto__bg" src="/assets/fotos/3.jpg" alt="" aria-hidden="true" loading="lazy" />
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/3.webp" />
+              <img src="/assets/fotos/3.jpg" alt="Jogo do Atlético-GO" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">26 de abril de 2026 · Jogo do Dragão</span>
+          <p class="capitulo__poesia">Atlético x Avaí. Ganhamos porque você é a minha pé-quente, princesa. (E porque o mascote fedia tanto que até o adversário pediu pra trocar de campo, juro.)</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">04</span>
+          <div class="capitulo__foto" data-orient="h">
+            <img class="capitulo__foto__bg" src="/assets/fotos/4.jpg" alt="" aria-hidden="true" loading="lazy" />
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/4.webp" />
+              <img src="/assets/fotos/4.jpg" alt="Encontro de segunda no Passeio das Águas" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">9 de fevereiro de 2026 · Passeio das Águas</span>
+          <p class="capitulo__poesia">Encontro de segunda no Passeio das Águas. Aprendi com você, neném — segunda-feira é o melhor dia da semana, desde que tenha você nele.</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">05</span>
+          <div class="capitulo__foto" data-orient="h">
+            <img class="capitulo__foto__bg" src="/assets/fotos/5.jpg" alt="" aria-hidden="true" loading="lazy" />
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/5.webp" />
+              <img src="/assets/fotos/5.jpg" alt="Você com o buquê" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">1 de janeiro de 2026 · Ano novo, mesmo amor</span>
+          <p class="capitulo__poesia">Buquê pro meu amorzinho. Você ama, eu sei. E eu amo te ver amando — flor, ano novo, e tudo que a vida nos trouxer.</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">06</span>
+          <div class="capitulo__foto">
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/6.webp" />
+              <img src="/assets/fotos/6.jpg" alt="Praça do Jacaré, parte 1" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">26 de dezembro de 2025 · Praça do Jacaré</span>
+          <p class="capitulo__poesia">Praça do Jacaré. Você quase deslocou o joelhinho rindo, e eu pensei: é com essa risada desengonçada da minha princesa que eu quero passar a vida inteirinha 💕</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">07</span>
+          <div class="capitulo__foto">
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/7.webp" />
+              <img src="/assets/fotos/7.jpg" alt="Nós dois na Praça do Jacaré" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">26 de dezembro de 2025 · Praça do Jacaré, parte 2</span>
+          <p class="capitulo__poesia">Olha pra gente, neném. Somos bem lindos, né amor — e a gente combina demais 💞</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">08</span>
+          <div class="capitulo__foto">
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/8.webp" />
+              <img src="/assets/fotos/8.jpg" alt="Nosso Natal" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">25 de dezembro de 2025 · Natal nosso</span>
+          <p class="capitulo__poesia">Confesso, princesa: TDAH mandou lembranças e eu não lembro o que tava rolando aqui. Mas eu tô com você. Então é o momento mais importante do mundo ❤️</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">09</span>
+          <div class="capitulo__foto">
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/9.webp" />
+              <img src="/assets/fotos/9.jpg" alt="Brincadeiras na sua antiga caminha" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">14 de dezembro de 2025 · Sua antiga caminha</span>
+          <p class="capitulo__poesia">Brincadeirinhas e palhaçadas com o meu neném na sua antiga caminha. (Olha a patroa agora, com cama de casal — a gente cresceu juntinhos, princesa.)</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">10</span>
+          <div class="capitulo__foto">
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/10.webp" />
+              <img src="/assets/fotos/10.jpg" alt="Sentados, comendo alguma coisa" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">12 de dezembro de 2025</span>
+          <p class="capitulo__poesia">Sentadinhos, comendo qualquer coisa. A vida com você é isso, amor — o mais simples virando o momento mais bonito do dia.</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">11</span>
+          <div class="capitulo__foto">
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/11.webp" />
+              <img src="/assets/fotos/11.jpg" alt="Em um lugar nosso" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">6 de dezembro de 2025 · Um lugar nosso</span>
+          <p class="capitulo__poesia">Em um lugar que só você sabe onde fica, princesa. (E eu sei também — porque tô em todos eles com você, neném.)</p>
+        </div>
+      </article>
+
+      <article class="capitulo fade-in" data-tilt>
+        <div class="capitulo__foto-wrap">
+          <span class="capitulo__numero" aria-hidden="true">12</span>
+          <div class="capitulo__foto">
+            <picture>
+              <source type="image/webp" srcset="/assets/fotos/12.webp" />
+              <img src="/assets/fotos/12.jpg" alt="Eu exibindo o S24 FE" loading="lazy" />
+            </picture>
+          </div>
+        </div>
+        <div class="capitulo__texto">
+          <span class="capitulo__data">9 de novembro de 2025</span>
+          <p class="capitulo__poesia">Aqui eu tava exibindo o meu S24 FE novo. Confesso, amor. Mas a foto bonita mesmo é você — sempre você.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ATO 4: Apelidos -->
+    <section class="ato ato--apelidos" id="apelidos" aria-label="Apelidos">
+      <div class="apelidos">
+        <span class="apelido">Piculinha</span>
+        <span class="apelido">Covinhas</span>
+        <span class="apelido">Tomatinho</span>
+        <span class="apelido">Pequena</span>
+        <span class="apelido">Neném</span>
+        <span class="apelido">Amor</span>
+      </div>
+      <p class="apelidos__legenda">
+        Você é <strong>todinha minha</strong>.<br />
+        Cada apelido desses fica pequeno perto do tamanho do amor que eu sinto por você 💕
+      </p>
+    </section>
+
+    <!-- ATO 5: Trilha -->
+    <section class="ato ato--trilha" id="trilha" aria-label="Trilha sonora">
+      <h2 class="trilha__titulo">A trilha sonora <strong>do nosso amor</strong></h2>
+      <p class="trilha__sub">Toca uma. Toca as duas. Toca em loop, neném — porque sou tão sortudo de ter você na minha vida.</p>
+
+      <div class="vinis">
+        <div class="vinil">
+          <div class="vinil__disco" aria-hidden="true"></div>
+          <p class="vinil__titulo">Vem Cá</p>
+          <p class="vinil__artista">Pelé MilFlows</p>
+          <div class="vinil__embed">
+            <iframe
+              data-embed="vem-ca"
+              src="https://open.spotify.com/embed/track/0GaDlSqPS775myNtwwYNaU?utm_source=generator&theme=0"
+              width="100%" height="80" frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="Vem Cá - Pelé MilFlows"></iframe>
+          </div>
+        </div>
+
+        <div class="vinil">
+          <div class="vinil__disco" aria-hidden="true"></div>
+          <p class="vinil__titulo">Saturno</p>
+          <p class="vinil__artista">Ajaxx &amp; BIN</p>
+          <div class="vinil__embed">
+            <iframe
+              data-embed="saturno"
+              src="https://open.spotify.com/embed/track/68cPbG7hJnwDW9nPX1uQcX?utm_source=generator&theme=0"
+              width="100%" height="80" frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="Saturno - Ajaxx e BIN"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATO 6: A Carta -->
+    <section class="ato ato--carta" id="carta" aria-label="Carta">
+      <article class="carta">
+        <p class="carta__data">05 de maio de 2026</p>
+        <p class="carta__saudacao">Para a minha Piculinha,</p>
+        <div class="carta__corpo" id="carta-corpo">
+          <p>Oi, meu amor, nosso dia chegou.</p>
+          <p>Quanta história juntos, hein? Três anos. Bem, isso é pouquinho para quem ainda vai viver longos anos juntos. Afinal, somos ornamentos. E é isso: não pode apagar nunca.</p>
+          <p>Como eu amo viver a minha vida ao seu lado. Como eu sou grato. Obrigado por ter achado a parceira dos meus sonhos. Sinceramente, nunca imaginei que isso iria acontecer com você. Por muito tempo, ambos seguíamos vidas diferentes. E foi por diversas tentativas que hoje se torna uma grande história.</p>
+          <p>Em todo esse tempo, como é bom ver o quanto nosso relacionamento amadureceu. O quanto o tempo cuidou disso. É nítido ver como o nosso relacionamento está sendo moldado para um futuro noivado e um futuro casamento. Claro, até lá tem muito tijolinho a ser colocado no seu devido local. Tem muita história e aprendizado a ser vivido. Eu estou ansioso, mas aguardo todo o processo necessário e que tudo ocorra no tempo.</p>
+          <p>Bem, quero somente agradecer por toda essa história juntos. Pelo companheirismo, pelas conversas, risadas, conselhos, choros e momentos felizes. Abraços, paciência e até brigas. Sim, sou grato até por nossas brigas, porque com elas crescemos, amadurecemos e respeitamos o tempo um do outro.</p>
+          <p>Sou muito feliz por caminharmos em Cristo juntos. Por termos momentos de fé juntos. Por lermos a Bíblia juntos. E orar juntos. Isso eu vejo a cada dia o quanto fortalece o nosso relacionamento e nossa alma.</p>
+          <p>Enfim, minha <em>piculinha</em>, minha <em>covinha</em>, minha <em>pequena</em>, minha <em>princesa</em>, meu <em>tudo</em>. Escrever a nossa história em uma carta eu teria que fazer um livro. Editora João P. Eu só quero viver novas histórias com você e construir uma família com você, que a gente sempre fique do lado do outro e sejamos muito felizes.</p>
+          <p>Não ia comentar nessa cartinha, por mais que eu não esteja nos meus melhores dias. Tudo vai ficar bem porque tenho você e Deus sempre comigo. Feliz! Três anos de namoro, que venham muitos pra frente.</p>
+          <p>Te amo muito.</p>
+        </div>
+        <p class="carta__assinatura" id="carta-assinatura">
+          João Pedro
+          <span class="carta__assinatura-data">eternamente seu — 05/05/2026</span>
+        </p>
+      </article>
+
+      <a href="#contrato" class="carta__virar" id="carta-virar">Vire a página... 💌</a>
+    </section>
+
+    <!-- ATO 7: Contrato -->
+    <section class="ato ato--contrato" id="contrato" aria-label="Renovação de contrato">
+      <div class="selo" aria-hidden="true">
+        Cartório<br />do Amor
+      </div>
+
+      <article class="contrato">
+        <h2 class="contrato__titulo">Contrato de Renovação de Namoro</h2>
+
+        <div class="contrato__corpo">
+          <p>
+            Pelo presente instrumento particular, a CONTRATADA,
+            <strong>Fernanda Vittoria</strong>
+            (vulgarmente conhecida por <em>"Piculinha"</em>, <em>"Tomatinho"</em>, <em>"Covinhas"</em>, <em>"Neném"</em>, <em>"Pequena"</em>),
+            e o CONTRATANTE,
+            <strong>João Pedro</strong>,
+            acordam a renovação automática do vínculo afetivo iniciado em <strong>05/05/2023</strong>,
+            pelo período de mais 1 (um) ano, podendo ser renovado infinitas vezes — sem multa, sem cláusula de saída, sem letra miúda.
+          </p>
+
+          <p class="contrato__clausula">
+            Cláusula única: amor exclusivo, beijos em quantidade ilimitada,
+            abraços de domingo de manhã obrigatórios.
+          </p>
+        </div>
+
+        <div class="assinatura">
+          <label class="assinatura__label" for="assinatura-canvas">Assinatura da contratada</label>
+          <div class="assinatura__canvas-wrap">
+            <canvas class="assinatura__canvas" id="assinatura-canvas" width="800" height="280" aria-label="Campo para assinar com mouse ou dedo"></canvas>
+          </div>
+          <div class="assinatura__linha">Fernanda Vittoria · CPF do meu coração</div>
+          <button type="button" class="assinatura__limpar" id="assinatura-limpar">limpar assinatura</button>
+        </div>
+
+        <div class="selfie">
+          <label class="assinatura__label">Reconhecimento facial · selfie da contratada</label>
+          <div class="selfie__area">
+            <div class="selfie__preview" id="selfie-preview" data-state="empty">
+              <video id="selfie-video" playsinline muted autoplay></video>
+              <img id="selfie-foto" alt="Selfie capturada" />
+              <div class="selfie__placeholder">
+                <span class="selfie__icone">📷</span>
+                <p>tirar selfie pra autenticar o contrato</p>
+              </div>
+            </div>
+            <div class="selfie__botoes">
+              <button type="button" class="selfie__btn" id="selfie-abrir">📷 abrir câmera</button>
+              <button type="button" class="selfie__btn selfie__btn--primary" id="selfie-tirar" hidden>✨ tirar foto</button>
+              <button type="button" class="selfie__btn selfie__btn--ghost" id="selfie-refazer" hidden>refazer</button>
+            </div>
+            <p class="selfie__dica" id="selfie-dica">a câmera abre só quando você clica — sua foto fica no aparelho.</p>
+          </div>
+        </div>
+
+        <p class="contrato__pergunta">Você aceita renovar mais um aninho comigo, meu amor?</p>
+
+        <div class="contrato__botoes" id="contrato-botoes">
+          <button type="button" class="btn-resp btn-sim" id="btn-sim">SIM, eu aceito 💍</button>
+          <button type="button" class="btn-resp btn-nao" id="btn-nao">Não 😅</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- ATO 8a: Final feliz -->
+    <section class="ato ato--final" id="final" aria-label="Final" hidden>
+      <p class="final__msg">
+        <em>Eu sabia, meu amorzinho.</em><br />
+        Você é minha vida toda.<br />
+        Vamos pro 4º ano juntinhos, neném 💍
+      </p>
+      <p class="final__assinatura">— João Pedro, eternamente seu amorzinho ❤️</p>
+
+      <div class="final__acoes">
+        <button type="button" class="final__btn final__btn--primary" id="final-enviar">
+          💌 enviar pro João no WhatsApp
+        </button>
+        <button type="button" class="final__btn final__btn--ghost" id="final-baixar">
+          📜 só baixar pra mim
+        </button>
+        <p class="final__nota" id="final-nota">o contrato vai pro <strong>(62) 99482-6949</strong> com assinatura + selfie 💍</p>
+      </div>
+    </section>
+
+  </main>
+
+  <canvas id="confete-canvas" aria-hidden="true"></canvas>
+
+  <!-- mini-player de música (Saturno tocando) -->
+  <aside class="miniplayer" id="miniplayer" hidden aria-label="Música tocando">
+    <span class="miniplayer__pulse" aria-hidden="true"></span>
+    <div class="miniplayer__info">
+      <span class="miniplayer__titulo">Saturno</span>
+      <span class="miniplayer__artista">BIN · Mainstreet · Ajaxx</span>
+    </div>
+    <button type="button" class="miniplayer__btn" id="miniplayer-toggle" aria-label="Pausar/tocar">⏸</button>
+  </aside>
+
+  <!-- player invisível do YouTube (montado pela IFrame API) -->
+  <div id="yt-player" aria-hidden="true" style="position:fixed;bottom:-200px;left:-200px;width:1px;height:1px;opacity:0;pointer-events:none;"></div>
+
+  <!-- libs -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+
+  <!-- nossos -->
+  <script type="module" src="/scripts/main.js"></script>
+</body>
+</html>

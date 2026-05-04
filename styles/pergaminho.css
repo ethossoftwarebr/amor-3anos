@@ -1,0 +1,365 @@
+/* === Ato 7: Contrato (pergaminho) === */
+.ato--contrato {
+  background: var(--pg-bg);
+  color: var(--pg-ink);
+  padding: clamp(3rem, 8vh, 5rem) var(--safe-x);
+  position: relative;
+  overflow: hidden;
+}
+
+.ato--contrato::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(184, 134, 11, 0.08), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(139, 26, 26, 0.08), transparent 50%),
+    repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(60, 40, 20, 0.03) 60px, rgba(60, 40, 20, 0.03) 61px);
+  pointer-events: none;
+}
+
+.ato--contrato::after {
+  content: '';
+  position: absolute;
+  inset: 1.2rem;
+  border: 2px double var(--pg-bordo);
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.contrato {
+  max-width: 720px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.contrato__titulo {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pg-bordo);
+  border-bottom: 1px solid var(--pg-bordo);
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.contrato__corpo {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  line-height: 1.7;
+  text-align: justify;
+  color: var(--pg-ink);
+}
+
+.contrato__corpo p {
+  margin-bottom: 1rem;
+}
+
+.contrato__corpo strong {
+  font-weight: 700;
+  color: var(--pg-bordo);
+}
+
+.contrato__clausula {
+  font-style: italic;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  border-top: 1px dashed rgba(60, 40, 20, 0.4);
+  border-bottom: 1px dashed rgba(60, 40, 20, 0.4);
+  margin: 1.5rem 0;
+}
+
+.assinatura {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 1rem;
+}
+
+.assinatura__label {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pg-ink);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.assinatura__canvas-wrap {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--pg-bordo);
+  border-radius: 4px;
+  padding: 0.5rem;
+  position: relative;
+  box-shadow: inset 0 2px 6px rgba(60, 40, 20, 0.15);
+}
+
+.assinatura__canvas {
+  display: block;
+  width: 100%;
+  height: 140px;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.assinatura__linha {
+  border-top: 1px solid rgba(60, 40, 20, 0.4);
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  font-size: 0.8rem;
+  color: rgba(60, 40, 20, 0.7);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.assinatura__limpar {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--pg-bordo);
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 0.4rem;
+}
+
+/* === Selfie === */
+.selfie {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 1.5rem;
+}
+
+.selfie__area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.selfie__preview {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(60, 40, 20, 0.08);
+  border: 2px solid var(--pg-bordo);
+  box-shadow: inset 0 2px 8px rgba(60, 40, 20, 0.2), 0 6px 18px rgba(60, 40, 20, 0.15);
+}
+
+.selfie__preview video,
+.selfie__preview img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* espelha a webcam pra parecer um espelho */
+  transform: scaleX(-1);
+}
+
+.selfie__preview[data-state="empty"] video,
+.selfie__preview[data-state="empty"] img,
+.selfie__preview[data-state="captured"] video,
+.selfie__preview[data-state="capturing"] img {
+  display: none;
+}
+
+.selfie__preview[data-state="empty"] .selfie__placeholder,
+.selfie__preview[data-state="capturing"] .selfie__placeholder,
+.selfie__preview[data-state="captured"] .selfie__placeholder {
+  display: none;
+}
+
+.selfie__preview[data-state="empty"] .selfie__placeholder {
+  display: flex;
+}
+
+.selfie__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--pg-ink);
+  letter-spacing: 0.05em;
+  gap: 0.5rem;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.selfie__icone {
+  font-size: 2.4rem;
+}
+
+.selfie__botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.selfie__btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  background: var(--pg-bg);
+  color: var(--pg-ink);
+  border: 1.5px solid var(--pg-bordo);
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+
+.selfie__btn:hover {
+  transform: translateY(-1px);
+  background: rgba(184, 134, 11, 0.1);
+}
+
+.selfie__btn--primary {
+  background: var(--pg-bordo);
+  color: #fff;
+}
+
+.selfie__btn--primary:hover {
+  background: #6f0e0e;
+  background-image: linear-gradient(135deg, var(--pg-bordo), #5a0a0a);
+}
+
+.selfie__btn--ghost {
+  background: transparent;
+  border-color: rgba(60, 40, 20, 0.3);
+  color: rgba(60, 40, 20, 0.7);
+}
+
+.selfie__dica {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-style: italic;
+  color: rgba(60, 40, 20, 0.6);
+  letter-spacing: 0.04em;
+  text-align: center;
+  max-width: 32ch;
+}
+
+.selfie--ok .selfie__preview {
+  border-color: var(--pg-gold);
+  box-shadow: inset 0 2px 8px rgba(60, 40, 20, 0.2), 0 0 0 4px rgba(184, 134, 11, 0.18);
+}
+
+/* Modo captura: esconde botões e dicas durante geração do PNG */
+.contrato.contrato--capturando .contrato__pergunta,
+.contrato.contrato--capturando .contrato__botoes,
+.contrato.contrato--capturando .selfie__botoes,
+.contrato.contrato--capturando .selfie__dica,
+.contrato.contrato--capturando .selfie__placeholder,
+.contrato.contrato--capturando .assinatura__limpar {
+  display: none !important;
+}
+
+.contrato.contrato--capturando #selfie-video {
+  display: none !important;
+}
+
+.contrato__pergunta {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-style: italic;
+  color: var(--pg-bordo);
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.contrato__botoes {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 80px;
+  flex-wrap: wrap;
+}
+
+.btn-resp {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  cursor: pointer;
+  transition: transform 0.15s ease-out, box-shadow var(--t-quick);
+  white-space: nowrap;
+}
+
+.btn-sim {
+  background: linear-gradient(135deg, var(--pg-gold) 0%, #d4a017 100%);
+  color: var(--pg-ink);
+  border-color: var(--pg-bordo);
+  box-shadow: 0 8px 24px rgba(184, 134, 11, 0.4);
+}
+
+.btn-sim:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 12px 32px rgba(184, 134, 11, 0.55);
+}
+
+.btn-nao {
+  background: rgba(139, 26, 26, 0.1);
+  color: var(--pg-bordo);
+  border-color: var(--pg-bordo);
+  position: relative;
+}
+
+.btn-nao--fugindo {
+  position: absolute;
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.selo {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #c2185b 0%, var(--pg-bordo) 60%, #5a0e0e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-script-bold);
+  color: var(--pg-bg);
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.1;
+  transform: rotate(-12deg);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.selo::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.5);
+}
